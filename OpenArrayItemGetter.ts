@@ -1,20 +1,19 @@
-import { OpenArrayContainer } from './OpenArrayContainer';
 import { isArray } from 'basic-data-handling/isArray_notArray';
+import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
+import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
 import { getCopy } from '@writetome51/array-non-modifying-getters-basic/getCopy';
-import { getAdjacent } from '@writetome51/array-non-modifying-getters-basic/getAdjacent';
+import { getAdjacentAt } from '@writetome51/array-non-modifying-getters-basic/getAdjacentAt';
 import { getItem } from '@writetome51/array-non-modifying-getters-basic/getItem';
 import { getFilteredResults } from '@writetome51/array-non-modifying-getters-basic/getFilteredResults';
-import { getAdjacentToValue } from '@writetome51/array-non-modifying-getters-intermediate/getAdjacentToValue';
-import { getUniqueItems } from '@writetome51/array-get-duplicates-and-unique-items/getUniqueItems';
 import { getHead } from '@writetome51/array-non-modifying-getters-basic/getHead';
 import { getTail } from '@writetome51/array-non-modifying-getters-basic/getTail';
-import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
 import { getAllAfterFirst, getAllBeforeFirst }
 	from '@writetome51/array-non-modifying-getters-intermediate/getAllAfterFirst_getAllBeforeFirst';
 import { getAllAfterLast, getAllBeforeLast }
-	from 'intuitive-array-handlers/no_modify/get/getAllAfterLast_getAllBeforeLast';
-import {getAllDuplicates} from 'intuitive-array-handlers/no_modify/get/getAllDuplicates';
-import {getUniqueDuplicates} from 'intuitive-array-handlers/no_modify/get/getUniqueDuplicates';
+	from '@writetome51/array-non-modifying-getters-intermediate/getAllAfterLast_getAllBeforeLast';
+import { getAdjacentToValue } from '@writetome51/array-non-modifying-getters-intermediate/getAdjacentToValue';
+import { getDuplicates } from '@writetome51/array-get-duplicates-and-unique-items/getDuplicates';
+import { getUniqueItems } from '@writetome51/array-get-duplicates-and-unique-items/getUniqueItems';
 
 
 export class OpenArrayItemGetter extends OpenArrayContainer {
@@ -50,8 +49,8 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 
 
 	// startingIndex can be negative or positive.
-	adjacent(startingIndex, numItems): any[] {
-		return getAdjacent(startingIndex, numItems, this.data);
+	adjacentAt(startingIndex, numItems): any[] {
+		return getAdjacentAt(startingIndex, numItems, this.data);
 	}
 
 
@@ -81,20 +80,15 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 	}
 
 
-	// removes any duplicates.
+	// returns no duplicates.
 	uniqueItems(): any[] {
 		return getUniqueItems(this.data);
 	}
 
 
 	// returns every instance of a duplicate, so you may get multiple instances.
-	allDuplicates(){
-		return getAllDuplicates(this.data);
-	}
-
-	// similar to .allDuplicates(), except you don't get redundant items.
-	uniqueDuplicates(){
-		return getUniqueDuplicates(this.data);
+	duplicates() {
+		return getDuplicates(this.data);
 	}
 
 

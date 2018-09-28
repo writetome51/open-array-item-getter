@@ -13,20 +13,19 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var OpenArrayContainer_1 = require("./OpenArrayContainer");
 var isArray_notArray_1 = require("basic-data-handling/isArray_notArray");
-var getCopy_1 = require("intuitive-array-handlers/no_modify/get/getCopy");
-var getAdjacent_1 = require("intuitive-array-handlers/no_modify/get/getAdjacent");
-var getItem_1 = require("intuitive-array-handlers/no_modify/get/getItem");
-var getFilteredResults_1 = require("intuitive-array-handlers/no_modify/get/getFilteredResults");
-var getAdjacentToValue_1 = require("intuitive-array-handlers/no_modify/get/getAdjacentToValue");
-var getUniqueItems_1 = require("intuitive-array-handlers/no_modify/get/getUniqueItems");
-var getHead_1 = require("intuitive-array-handlers/no_modify/get/getHead");
-var getTail_1 = require("intuitive-array-handlers/no_modify/get/getTail");
-var getAllAfterFirst_getAllBeforeFirst_1 = require("intuitive-array-handlers/no_modify/get/getAllAfterFirst_getAllBeforeFirst");
-var getAllAfterLast_getAllBeforeLast_1 = require("intuitive-array-handlers/no_modify/get/getAllAfterLast_getAllBeforeLast");
-var getAllDuplicates_1 = require("intuitive-array-handlers/no_modify/get/getAllDuplicates");
-var getUniqueDuplicates_1 = require("intuitive-array-handlers/no_modify/get/getUniqueDuplicates");
+var OpenArrayContainer_1 = require("@writetome51/open-array-container/OpenArrayContainer");
+var getCopy_1 = require("@writetome51/array-non-modifying-getters-basic/getCopy");
+var getAdjacentAt_1 = require("@writetome51/array-non-modifying-getters-basic/getAdjacentAt");
+var getItem_1 = require("@writetome51/array-non-modifying-getters-basic/getItem");
+var getFilteredResults_1 = require("@writetome51/array-non-modifying-getters-basic/getFilteredResults");
+var getHead_1 = require("@writetome51/array-non-modifying-getters-basic/getHead");
+var getTail_1 = require("@writetome51/array-non-modifying-getters-basic/getTail");
+var getAllAfterFirst_getAllBeforeFirst_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAllAfterFirst_getAllBeforeFirst");
+var getAllAfterLast_getAllBeforeLast_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAllAfterLast_getAllBeforeLast");
+var getAdjacentToValue_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAdjacentToValue");
+var getDuplicates_1 = require("@writetome51/array-get-duplicates-and-unique-items/getDuplicates");
+var getUniqueItems_1 = require("@writetome51/array-get-duplicates-and-unique-items/getUniqueItems");
 var OpenArrayItemGetter = /** @class */ (function (_super) {
     __extends(OpenArrayItemGetter, _super);
     function OpenArrayItemGetter(data) {
@@ -48,8 +47,8 @@ var OpenArrayItemGetter = /** @class */ (function (_super) {
         return getTail_1.getTail(numItems, this.data);
     };
     // startingIndex can be negative or positive.
-    OpenArrayItemGetter.prototype.adjacent = function (startingIndex, numItems) {
-        return getAdjacent_1.getAdjacent(startingIndex, numItems, this.data);
+    OpenArrayItemGetter.prototype.adjacentAt = function (startingIndex, numItems) {
+        return getAdjacentAt_1.getAdjacentAt(startingIndex, numItems, this.data);
     };
     // info = {value: any, offset: number, howMany: number}
     OpenArrayItemGetter.prototype.adjacentToValue = function (info) {
@@ -67,17 +66,13 @@ var OpenArrayItemGetter = /** @class */ (function (_super) {
     OpenArrayItemGetter.prototype.allBeforeLast = function (value) {
         return getAllAfterLast_getAllBeforeLast_1.getAllBeforeLast(value, this.data);
     };
-    // removes any duplicates.
+    // returns no duplicates.
     OpenArrayItemGetter.prototype.uniqueItems = function () {
         return getUniqueItems_1.getUniqueItems(this.data);
     };
     // returns every instance of a duplicate, so you may get multiple instances.
-    OpenArrayItemGetter.prototype.allDuplicates = function () {
-        return getAllDuplicates_1.getAllDuplicates(this.data);
-    };
-    // similar to .allDuplicates(), except you don't get redundant items.
-    OpenArrayItemGetter.prototype.uniqueDuplicates = function () {
-        return getUniqueDuplicates_1.getUniqueDuplicates(this.data);
+    OpenArrayItemGetter.prototype.duplicates = function () {
+        return getDuplicates_1.getDuplicates(this.data);
     };
     // testFunction has same signature as callback passed to array.filter():
     OpenArrayItemGetter.prototype.filteredResults = function (testFunction) {
