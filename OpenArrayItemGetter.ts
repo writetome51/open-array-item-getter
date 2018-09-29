@@ -7,6 +7,7 @@ import { getItem } from '@writetome51/array-non-modifying-getters-basic/getItem'
 import { getFilteredResults } from '@writetome51/array-non-modifying-getters-basic/getFilteredResults';
 import { getHead } from '@writetome51/array-non-modifying-getters-basic/getHead';
 import { getTail } from '@writetome51/array-non-modifying-getters-basic/getTail';
+import {getMiddle} from '@writetome51/array-non-modifying-getters-basic/getMiddle'; 
 import { getAllAfterFirst, getAllBeforeFirst }
 	from '@writetome51/array-non-modifying-getters-intermediate/getAllAfterFirst_getAllBeforeFirst';
 import { getAllAfterLast, getAllBeforeLast }
@@ -45,6 +46,11 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 
 	tail(numItems): any[] {
 		return getTail(numItems, this.data);
+	}
+
+
+	middle(numItemsToIgnoreAtEachEnd): any[] {
+		return getMiddle(numItemsToIgnoreAtEachEnd, this.data);
 	}
 
 
@@ -93,19 +99,19 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 
 
 	// testFunction has same signature as callback passed to array.filter():
-	filteredResults(testFunction): any[] {
+	byTest(testFunction): any[] {
 		return getFilteredResults(testFunction, this.data);
 	}
 
 
 	byType(type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'): any[] {
 		if (type === 'array') {
-			return this.filteredResults((item) => {
+			return this.byTest((item) => {
 				return (isArray(item));
 			});
 		}
 		else {
-			return this.filteredResults((item) => {
+			return this.byTest((item) => {
 				return (typeof item === type);
 			});
 		}

@@ -21,6 +21,7 @@ var getItem_1 = require("@writetome51/array-non-modifying-getters-basic/getItem"
 var getFilteredResults_1 = require("@writetome51/array-non-modifying-getters-basic/getFilteredResults");
 var getHead_1 = require("@writetome51/array-non-modifying-getters-basic/getHead");
 var getTail_1 = require("@writetome51/array-non-modifying-getters-basic/getTail");
+var getMiddle_1 = require("@writetome51/array-non-modifying-getters-basic/getMiddle");
 var getAllAfterFirst_getAllBeforeFirst_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAllAfterFirst_getAllBeforeFirst");
 var getAllAfterLast_getAllBeforeLast_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAllAfterLast_getAllBeforeLast");
 var getAdjacentToValue_1 = require("@writetome51/array-non-modifying-getters-intermediate/getAdjacentToValue");
@@ -45,6 +46,9 @@ var OpenArrayItemGetter = /** @class */ (function (_super) {
     };
     OpenArrayItemGetter.prototype.tail = function (numItems) {
         return getTail_1.getTail(numItems, this.data);
+    };
+    OpenArrayItemGetter.prototype.middle = function (numItemsToIgnoreAtEachEnd) {
+        return getMiddle_1.getMiddle(numItemsToIgnoreAtEachEnd, this.data);
     };
     // startingIndex can be negative or positive.
     OpenArrayItemGetter.prototype.adjacentAt = function (startingIndex, numItems) {
@@ -75,17 +79,17 @@ var OpenArrayItemGetter = /** @class */ (function (_super) {
         return getDuplicates_1.getDuplicates(this.data);
     };
     // testFunction has same signature as callback passed to array.filter():
-    OpenArrayItemGetter.prototype.filteredResults = function (testFunction) {
+    OpenArrayItemGetter.prototype.byTest = function (testFunction) {
         return getFilteredResults_1.getFilteredResults(testFunction, this.data);
     };
     OpenArrayItemGetter.prototype.byType = function (type) {
         if (type === 'array') {
-            return this.filteredResults(function (item) {
+            return this.byTest(function (item) {
                 return (isArray_notArray_1.isArray(item));
             });
         }
         else {
-            return this.filteredResults(function (item) {
+            return this.byTest(function (item) {
                 return (typeof item === type);
             });
         }
