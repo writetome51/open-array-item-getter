@@ -1,20 +1,18 @@
 import { isArray } from 'basic-data-handling/isArray_notArray';
 import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
 import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
-import { getCopy } from '@writetome51/array-non-modifying-getters-basic/getCopy';
-import { getAdjacentAt } from '@writetome51/array-non-modifying-getters-basic/getAdjacentAt';
-import { getItem } from '@writetome51/array-non-modifying-getters-basic/getItem';
-import { getFilteredResults } from '@writetome51/array-non-modifying-getters-basic/getFilteredResults';
-import { getHead } from '@writetome51/array-non-modifying-getters-basic/getHead';
-import { getTail } from '@writetome51/array-non-modifying-getters-basic/getTail';
-import {getMiddle} from '@writetome51/array-non-modifying-getters-basic/getMiddle'; 
-import { getAllAfterFirst, getAllBeforeFirst }
-	from '@writetome51/array-non-modifying-getters-intermediate/getAllAfterFirst_getAllBeforeFirst';
-import { getAllAfterLast, getAllBeforeLast }
-	from '@writetome51/array-non-modifying-getters-intermediate/getAllAfterLast_getAllBeforeLast';
-import { getAdjacentToValue } from '@writetome51/array-non-modifying-getters-intermediate/getAdjacentToValue';
-import { getDuplicates } from '@writetome51/array-get-duplicates-and-unique-items/getDuplicates';
-import { getUniqueItems } from '@writetome51/array-get-duplicates-and-unique-items/getUniqueItems';
+import { getCopy } from '@writetome51/array-get-copy/getCopy';
+import { getAdjacentAt } from '@writetome51/array-get-adjacent-at/getAdjacentAt';
+import { getItem } from '@writetome51/array-get-item/getItem';
+import { getFilteredResults } from '@writetome51/array-get-filtered-results';
+import { getHead } from '@writetome51/array-get-head-tail/getHead';
+import { getTail } from '@writetome51/array-get-head-tail/getTail';
+import {getBetween} from '@writetome51/array-get-between/getBetween'; 
+import { getAllAfterFirst, getAllBeforeFirst } from '@writetome51/array-get-all-after-before-first';
+import { getAllAfterLast, getAllBeforeLast } from '@writetome51/array-get-all-after-before-last';
+import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
+import { getDuplicates } from '@writetome51/array-get-duplicates/getDuplicates';
+import { getUniqueItems } from '@writetome51/array-get-unique-items/getUniqueItems';
 
 
 export class OpenArrayItemGetter extends OpenArrayContainer {

@@ -15,11 +15,19 @@
   "author": "Steve Thompson",
   "license": "MIT",
   "dependencies": {
-    "basic-data-handling": "latest",
-    "@writetome51/open-array-container": "latest",
-    "@writetome51/adjacent-to-value-info-interface": "latest",
-    "@writetome51/array-get-duplicates-and-unique-items": "latest",
-    "@writetome51/array-non-modifying-getters-basic": "latest",
-    "@writetome51/array-non-modifying-getters-intermediate": "latest"
+    	"basic-data-handling": "latest",
+    	"@writetome51/open-array-container": "latest",
+    	"@writetome51/adjacent-to-value-info-interface": "latest",
+	"@writetome51/array-get-copy":"latest",
+	"@writetome51/array-get-adjacent-at":"latest",
+	"@writetome51/array-get-item":"latest",
+	"@writetome51/array-get-filtered-results":"latest",
+	"@writetome51/array-get-head-tail":"latest",
+	"@writetome51/array-get-between":"latest",
+	"@writetome51/array-get-all-after-before-first":"latest",
+	"@writetome51/array-get-all-after-before-last":"latest",
+	"@writetome51/array-get-adjacent-to-value":"latest",
+    	"@writetome51/array-get-duplicates": "latest",
+ 	"@writetome51/array-get-unique-items": "latest"
   }
 }
