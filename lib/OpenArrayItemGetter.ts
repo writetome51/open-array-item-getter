@@ -7,12 +7,13 @@ import { getItem } from '@writetome51/array-get-item/getItem';
 import { getFilteredResults } from '@writetome51/array-get-filtered-results';
 import { getHead } from '@writetome51/array-get-head-tail/getHead';
 import { getTail } from '@writetome51/array-get-head-tail/getTail';
-import {getBetween} from '@writetome51/array-get-between/getBetween'; 
+import { getBetween } from '@writetome51/array-get-between/getBetween';
 import { getAllAfterFirst, getAllBeforeFirst } from '@writetome51/array-get-all-after-before-first';
 import { getAllAfterLast, getAllBeforeLast } from '@writetome51/array-get-all-after-before-last';
 import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
 import { getDuplicates } from '@writetome51/array-get-duplicates/getDuplicates';
 import { getUniqueItems } from '@writetome51/array-get-unique-items/getUniqueItems';
+import { getShuffled } from '@writetome51/array-get-shuffled/getShuffled';
 
 
 export class OpenArrayItemGetter extends OpenArrayContainer {
@@ -47,8 +48,8 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 	}
 
 
-	middle(numItemsToIgnoreAtEachEnd): any[] {
-		return getMiddle(numItemsToIgnoreAtEachEnd, this.data);
+	between(numItemsToIgnoreAtEachEnd): any[] {
+		return getBetween(numItemsToIgnoreAtEachEnd, this.data);
 	}
 
 
@@ -58,7 +59,8 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 	}
 
 
-	// info = {value: any, offset: number, howMany: number}
+	// Only applies to the first instance of value found in array.
+	// info = {value: anyExceptObject, offset: integer, howMany: integer greater than zero}
 	adjacentToValue(info: IAdjacentToValueInfo): any[] {
 		return getAdjacentToValue(info, this.data);
 	}
@@ -91,12 +93,18 @@ export class OpenArrayItemGetter extends OpenArrayContainer {
 
 
 	// returns every instance of a duplicate, so you may get multiple instances.
-	duplicates() {
+	duplicates(): any[] {
 		return getDuplicates(this.data);
 	}
 
 
-	// testFunction has same signature as callback passed to array.filter():
+	shuffled(): any[] {
+		return getShuffled(this.data);
+	}
+
+
+	// testFunction = function(currentValue, currentIndex, theArray){...}
+	// testFunction lib currentValue, and returns boolean based on if it passes.
 	byTest(testFunction): any[] {
 		return getFilteredResults(testFunction, this.data);
 	}

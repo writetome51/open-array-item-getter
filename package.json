@@ -2,32 +2,48 @@
   "name": "@writetome51/open-array-item-getter",
   "version": "1.0.1",
   "description": "an array-manipulating typescript/javascript class with methods that return items copied from the array",
-  "main": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/writetome51/open-array-item-getter.git"
+  },
+
   "keywords": [
+    "open",
     "array",
+    "get",
+    "item",
+    "items",
+    "getter",
     "manipulation",
     "typescript",
     "class"
   ],
   "author": "Steve Thompson",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/writetome51/open-array-item-getter/issues"
+  },
+  "homepage": "https://github.com/writetome51/open-array-item-getter#readme",
   "dependencies": {
-    	"basic-data-handling": "latest",
-    	"@writetome51/open-array-container": "latest",
-    	"@writetome51/adjacent-to-value-info-interface": "latest",
-	"@writetome51/array-get-copy":"latest",
-	"@writetome51/array-get-adjacent-at":"latest",
-	"@writetome51/array-get-item":"latest",
-	"@writetome51/array-get-filtered-results":"latest",
-	"@writetome51/array-get-head-tail":"latest",
-	"@writetome51/array-get-between":"latest",
-	"@writetome51/array-get-all-after-before-first":"latest",
-	"@writetome51/array-get-all-after-before-last":"latest",
-	"@writetome51/array-get-adjacent-to-value":"latest",
-    	"@writetome51/array-get-duplicates": "latest",
- 	"@writetome51/array-get-unique-items": "latest"
+    "basic-data-handling": "latest",
+    "@writetome51/open-array-container": "latest",
+    "@writetome51/adjacent-to-value-info-interface": "latest",
+    "@writetome51/array-get-copy": "latest",
+    "@writetome51/array-get-adjacent-at": "latest",
+    "@writetome51/array-get-item": "latest",
+    "@writetome51/array-get-filtered-results": "latest",
+    "@writetome51/array-get-head-tail": "latest",
+    "@writetome51/array-get-between": "latest",
+    "@writetome51/array-get-all-after-before-first": "latest",
+    "@writetome51/array-get-all-after-before-last": "latest",
+    "@writetome51/array-get-adjacent-to-value": "latest",
+    "@writetome51/array-get-duplicates": "latest",
+    "@writetome51/array-get-unique-items": "latest",
+    "@writetome51/array-get-shuffled": "latest",
+    "@writetome51/arrays-match": "latest"
   }
 }
