@@ -1,8 +1,8 @@
-import { OpenArrayItemGetter } from './OpenArrayItemGetter';
-import { arraysMatch } from '@writetome51/arrays-match/arraysMatch';
+import { PublicArrayItemGetter } from './PublicArrayItemGetter';
+import { arraysMatch } from '@writetome51/arrays-match';
 
 
-let get = new OpenArrayItemGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let get = new PublicArrayItemGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 // Test 1:  test .item()
 let result = get.item(-1);

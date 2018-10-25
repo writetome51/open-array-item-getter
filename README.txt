@@ -1,15 +1,15 @@
-The OpenArrayItemGetter class is a dependency of the OpenArray class  
-( package:  @writetome51/open-array ).
+The PublicArrayItemGetter class is a dependency of the PublicArray class  
+( package:  @writetome51/public-array ).
 
 To instantiate, pass the actual array it will contain into its constructor:
 
-let getter = new OpenArrayItemGetter( [item1, item2, item3,...] );
+let getter = new PublicArrayItemGetter( [item1, item2, item3,...] );
 
 You can also reset the array by accessing the classes 'data' property:
 
 getter.data = [1,2,3,4,...];
 
-OpenArrayItemGetter has methods that return items copied from the array.  None of the methods modify 
+PublicArrayItemGetter has methods that return items copied from the array.  None of the methods modify 
 the array.  These are all of them:
 
     // Returns completely independent copy of the array:

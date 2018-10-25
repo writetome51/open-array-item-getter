@@ -1,22 +1,22 @@
 import { isArray } from 'basic-data-handling/isArray_notArray';
-import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
+import { PublicArrayContainer } from '@writetome51/public-array-container/PublicArrayContainer';
 import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
 import { getCopy } from '@writetome51/array-get-copy/getCopy';
-import { getAdjacentAt } from '@writetome51/array-get-adjacent-at/getAdjacentAt';
+import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
 import { getItem } from '@writetome51/array-get-item/getItem';
 import { getFilteredResults } from '@writetome51/array-get-filtered-results';
 import { getHead } from '@writetome51/array-get-head-tail/getHead';
 import { getTail } from '@writetome51/array-get-head-tail/getTail';
-import { getBetween } from '@writetome51/array-get-between/getBetween';
+import { getBetween } from '@writetome51/array-get-between';
 import { getAllAfterFirst, getAllBeforeFirst } from '@writetome51/array-get-all-after-before-first';
 import { getAllAfterLast, getAllBeforeLast } from '@writetome51/array-get-all-after-before-last';
 import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
 import { getDuplicates } from '@writetome51/array-get-duplicates/getDuplicates';
 import { getUniqueItems } from '@writetome51/array-get-unique-items/getUniqueItems';
-import { getShuffled } from '@writetome51/array-get-shuffled/getShuffled';
+import { getShuffled } from '@writetome51/array-get-shuffled';
 
 
-export class OpenArrayItemGetter extends OpenArrayContainer {
+export class PublicArrayItemGetter extends PublicArrayContainer {
 
 
 	constructor(data = []) {
