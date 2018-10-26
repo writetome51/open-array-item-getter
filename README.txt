@@ -1,4 +1,8 @@
-The PublicArrayItemGetter class is a dependency of the PublicArray class  
+To include in your project:
+
+import { PublicArrayItemGetter } from '@writetome51/public-array-item-getter';
+
+The PublicArrayItemGetter class is a dependency of the PublicArray class
 ( package:  @writetome51/public-array ).
 
 To instantiate, pass the actual array it will contain into its constructor:
