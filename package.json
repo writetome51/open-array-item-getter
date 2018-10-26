@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/public-array-item-getter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "an array-manipulating typescript/javascript class with methods that return items copied from the array",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
