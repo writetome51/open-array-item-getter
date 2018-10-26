@@ -1,4 +1,4 @@
-import { PublicArrayItemGetter } from './PublicArrayItemGetter';
+import { PublicArrayItemGetter } from '../dist';
 import { arraysMatch } from '@writetome51/arrays-match';
 
 

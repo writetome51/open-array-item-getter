@@ -2,9 +2,10 @@
   "name": "@writetome51/public-array-item-getter",
   "version": "1.0.0",
   "description": "an array-manipulating typescript/javascript class with methods that return items copied from the array",
-  "main": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,9 @@
     "url": "https://github.com/writetome51/public-array-item-getter/issues"
   },
   "homepage": "https://github.com/writetome51/public-array-item-getter#readme",
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  },
   "dependencies": {
     "basic-data-handling": "latest",
     "@writetome51/public-array-container": "latest",

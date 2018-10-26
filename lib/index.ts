@@ -1,5 +1,5 @@
 import { isArray } from 'basic-data-handling/isArray_notArray';
-import { PublicArrayContainer } from '@writetome51/public-array-container/PublicArrayContainer';
+import { PublicArrayContainer } from '@writetome51/public-array-container';
 import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
 import { getCopy } from '@writetome51/array-get-copy/getCopy';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
@@ -19,7 +19,7 @@ import { getShuffled } from '@writetome51/array-get-shuffled';
 export class PublicArrayItemGetter extends PublicArrayContainer {
 
 
-	constructor(data = []) {
+	constructor(data: any[] = []) {
 		super(data);
 	}
 
@@ -48,7 +48,7 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 
 
-	between(numItemsToIgnoreAtEachEnd): any[] {
+	between(numItemsToIgnoreAtEachEnd: number): any[] {
 		return getBetween(numItemsToIgnoreAtEachEnd, this.data);
 	}
 
@@ -66,21 +66,25 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 
 
+	// value cannot be object
 	allAfterFirst(value: any): any[] {
 		return getAllAfterFirst(value, this.data);
 	}
 
 
+	// value cannot be object
 	allBeforeFirst(value: any): any[] {
 		return getAllBeforeFirst(value, this.data);
 	}
 
 
+	// value cannot be object
 	allAfterLast(value: any): any[] {
 		return getAllAfterLast(value, this.data);
 	}
 
 
+	// value cannot be object
 	allBeforeLast(value: any): any[] {
 		return getAllBeforeLast(value, this.data);
 	}
@@ -103,24 +107,17 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 
 
-	// testFunction = function(currentValue, currentIndex, theArray){...}
-	// testFunction lib currentValue, and returns boolean based on if it passes.
-	byTest(testFunction): any[] {
+	// testFunction tests currentValue, and returns boolean based on if it passes.
+	byTest(testFunction: ((currentValue, currentIndex?, array?) => boolean)): any[] {
 		return getFilteredResults(testFunction, this.data);
 	}
 
 
 	byType(type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'): any[] {
-		if (type === 'array') {
-			return this.byTest((item) => {
-				return (isArray(item));
-			});
-		}
-		else {
-			return this.byTest((item) => {
-				return (typeof item === type);
-			});
-		}
+
+		if (type === 'array') return this.byTest((item) => isArray(item));
+
+		else return this.byTest((item) => typeof item === type);
 	}
 
 
