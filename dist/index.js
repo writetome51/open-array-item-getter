@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var isArray_notArray_1 = require("basic-data-handling/isArray_notArray");
 var public_array_container_1 = require("@writetome51/public-array-container");
-var getCopy_1 = require("@writetome51/array-get-copy/getCopy");
+var array_get_copy_1 = require("@writetome51/array-get-copy");
 var array_get_adjacent_at_1 = require("@writetome51/array-get-adjacent-at");
-var getItem_1 = require("@writetome51/array-get-item/getItem");
+var array_get_by_index_1 = require("@writetome51/array-get-by-index");
+var array_get_by_indexes_1 = require("@writetome51/array-get-by-indexes");
 var array_get_filtered_results_1 = require("@writetome51/array-get-filtered-results");
-var getHead_1 = require("@writetome51/array-get-head-tail/getHead");
-var getTail_1 = require("@writetome51/array-get-head-tail/getTail");
+var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var array_get_between_1 = require("@writetome51/array-get-between");
 var array_get_all_after_before_first_1 = require("@writetome51/array-get-all-after-before-first");
 var array_get_all_after_before_last_1 = require("@writetome51/array-get-all-after-before-last");
 var array_get_adjacent_to_value_1 = require("@writetome51/array-get-adjacent-to-value");
-var getDuplicates_1 = require("@writetome51/array-get-duplicates/getDuplicates");
-var getUniqueItems_1 = require("@writetome51/array-get-unique-items/getUniqueItems");
+var array_get_duplicates_1 = require("@writetome51/array-get-duplicates");
+var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
 var array_get_shuffled_1 = require("@writetome51/array-get-shuffled");
 var PublicArrayItemGetter = /** @class */ (function (_super) {
     __extends(PublicArrayItemGetter, _super);
@@ -34,32 +34,48 @@ var PublicArrayItemGetter = /** @class */ (function (_super) {
         if (data === void 0) { data = []; }
         return _super.call(this, data) || this;
     }
-    // These functions don't modify the array.  They return a new array or requested value.
+    // These functions don't modify the array.  They return item(s) copied from the array.
+    // Returns independent copy of array.
     PublicArrayItemGetter.prototype.copy = function () {
-        return getCopy_1.getCopy(this.data);
+        return array_get_copy_1.getCopy(this.data);
     };
     // index can be negative or positive.
-    PublicArrayItemGetter.prototype.item = function (index) {
-        return getItem_1.getItem(index, this.data);
+    PublicArrayItemGetter.prototype.byIndex = function (index) {
+        return array_get_by_index_1.getByIndex(index, this.data);
+    };
+    // indexes can be negative or positive.
+    PublicArrayItemGetter.prototype.byIndexes = function (indexes) {
+        return array_get_by_indexes_1.getByIndexes(indexes, this.data);
     };
     PublicArrayItemGetter.prototype.head = function (numItems) {
-        return getHead_1.getHead(numItems, this.data);
+        return array_get_head_tail_1.getHead(numItems, this.data);
     };
     PublicArrayItemGetter.prototype.tail = function (numItems) {
-        return getTail_1.getTail(numItems, this.data);
+        return array_get_head_tail_1.getTail(numItems, this.data);
     };
+    // Returns middle of array, between numItemsToIgnoreAtEachEnd.
     PublicArrayItemGetter.prototype.between = function (numItemsToIgnoreAtEachEnd) {
         return array_get_between_1.getBetween(numItemsToIgnoreAtEachEnd, this.data);
     };
-    // startingIndex can be negative or positive.
+    // Returns adjacent items.  startingIndex can be negative or positive.
     PublicArrayItemGetter.prototype.adjacentAt = function (startingIndex, numItems) {
         return array_get_adjacent_at_1.getAdjacentAt(startingIndex, numItems, this.data);
     };
-    // Only applies to the first instance of value found in array.
-    // info = {value: anyExceptObject, offset: integer, howMany: integer greater than zero}
     PublicArrayItemGetter.prototype.adjacentToValue = function (info) {
         return array_get_adjacent_to_value_1.getAdjacentToValue(info, this.data);
     };
+    /********
+     Explanation of adjacentToValue(info: IAdjacentToValueInfo): any[]
+     Returns adjacent items including, or near, a particular value.
+     Only applies to the first instance of value found in array.
+     The parameter 'info' is an object that looks like this:
+     {
+        value: any except object (the value to search for in the array),
+        offset: integer (tells function where, in relation to value, to begin selecting adjacent
+                items to return.  If offset is zero, the selection will begin with value.)
+        howMany: integer greater than zero (it's how many adjacent items to return)
+     }
+     *********/
     // value cannot be object
     PublicArrayItemGetter.prototype.allAfterFirst = function (value) {
         return array_get_all_after_before_first_1.getAllAfterFirst(value, this.data);
@@ -78,11 +94,11 @@ var PublicArrayItemGetter = /** @class */ (function (_super) {
     };
     // returns no duplicates.
     PublicArrayItemGetter.prototype.uniqueItems = function () {
-        return getUniqueItems_1.getUniqueItems(this.data);
+        return array_get_unique_items_1.getUniqueItems(this.data);
     };
     // returns every instance of a duplicate, so you may get multiple instances.
     PublicArrayItemGetter.prototype.duplicates = function () {
-        return getDuplicates_1.getDuplicates(this.data);
+        return array_get_duplicates_1.getDuplicates(this.data);
     };
     PublicArrayItemGetter.prototype.shuffled = function () {
         return array_get_shuffled_1.getShuffled(this.data);
@@ -91,6 +107,12 @@ var PublicArrayItemGetter = /** @class */ (function (_super) {
     PublicArrayItemGetter.prototype.byTest = function (testFunction) {
         return array_get_filtered_results_1.getFilteredResults(testFunction, this.data);
     };
+    /***********
+     Explanation of byTest(testFunction): IValueIndexPair[]
+        Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
+        A IValueIndexPair is this object: {value: any, index: integer}
+        It's both the value filtered by the testFunction and its index.
+     ***********/
     PublicArrayItemGetter.prototype.byType = function (type) {
         if (type === 'array')
             return this.byTest(function (item) { return isArray_notArray_1.isArray(item); });

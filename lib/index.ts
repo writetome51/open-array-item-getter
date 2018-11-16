@@ -1,18 +1,19 @@
 import { isArray } from 'basic-data-handling/isArray_notArray';
 import { PublicArrayContainer } from '@writetome51/public-array-container';
 import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
-import { getCopy } from '@writetome51/array-get-copy/getCopy';
+import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
+import { getCopy } from '@writetome51/array-get-copy';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
-import { getItem } from '@writetome51/array-get-item/getItem';
+import { getByIndex } from '@writetome51/array-get-by-index';
+import { getByIndexes } from '@writetome51/array-get-by-indexes';
 import { getFilteredResults } from '@writetome51/array-get-filtered-results';
-import { getHead } from '@writetome51/array-get-head-tail/getHead';
-import { getTail } from '@writetome51/array-get-head-tail/getTail';
+import { getHead, getTail } from '@writetome51/array-get-head-tail';
 import { getBetween } from '@writetome51/array-get-between';
 import { getAllAfterFirst, getAllBeforeFirst } from '@writetome51/array-get-all-after-before-first';
 import { getAllAfterLast, getAllBeforeLast } from '@writetome51/array-get-all-after-before-last';
 import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
-import { getDuplicates } from '@writetome51/array-get-duplicates/getDuplicates';
-import { getUniqueItems } from '@writetome51/array-get-unique-items/getUniqueItems';
+import { getDuplicates } from '@writetome51/array-get-duplicates';
+import { getUniqueItems } from '@writetome51/array-get-unique-items';
 import { getShuffled } from '@writetome51/array-get-shuffled';
 
 
@@ -24,17 +25,24 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 
 
-	// These functions don't modify the array.  They return a new array or requested value.
+	// These functions don't modify the array.  They return item(s) copied from the array.
 
 
+	// Returns independent copy of array.
 	copy(): any[] {
 		return getCopy(this.data);
 	}
 
 
 	// index can be negative or positive.
-	item(index): any {
-		return getItem(index, this.data);
+	byIndex(index): any {
+		return getByIndex(index, this.data);
+	}
+
+
+	// indexes can be negative or positive.
+	byIndexes(indexes): any[] {
+		return getByIndexes(indexes, this.data);
 	}
 
 
@@ -48,22 +56,33 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 
 
+	// Returns middle of array, between numItemsToIgnoreAtEachEnd.
 	between(numItemsToIgnoreAtEachEnd: number): any[] {
 		return getBetween(numItemsToIgnoreAtEachEnd, this.data);
 	}
 
 
-	// startingIndex can be negative or positive.
+	// Returns adjacent items.  startingIndex can be negative or positive.
 	adjacentAt(startingIndex, numItems): any[] {
 		return getAdjacentAt(startingIndex, numItems, this.data);
 	}
 
 
-	// Only applies to the first instance of value found in array.
-	// info = {value: anyExceptObject, offset: integer, howMany: integer greater than zero}
 	adjacentToValue(info: IAdjacentToValueInfo): any[] {
 		return getAdjacentToValue(info, this.data);
 	}
+	/********
+	 Explanation of adjacentToValue(info: IAdjacentToValueInfo): any[]
+	 Returns adjacent items including, or near, a particular value.
+	 Only applies to the first instance of value found in array.
+	 The parameter 'info' is an object that looks like this:
+	 {
+        value: any except object (the value to search for in the array),
+        offset: integer (tells function where, in relation to value, to begin selecting adjacent
+        		items to return.  If offset is zero, the selection will begin with value.)
+        howMany: integer greater than zero (it's how many adjacent items to return)
+     }
+	 *********/
 
 
 	// value cannot be object
@@ -108,12 +127,20 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 
 
 	// testFunction tests currentValue, and returns boolean based on if it passes.
-	byTest(testFunction: ((currentValue, currentIndex?, array?) => boolean)): any[] {
+	byTest(testFunction: ((currentValue, currentIndex?, array?) => boolean)): IValueIndexPair[] {
 		return getFilteredResults(testFunction, this.data);
 	}
+	/***********
+	 Explanation of byTest(testFunction): IValueIndexPair[]
+	 	Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
+	 	A IValueIndexPair is this object: {value: any, index: integer}
+	 	It's both the value filtered by the testFunction and its index.
+	 ***********/
 
 
-	byType(type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'): any[] {
+	byType(
+		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
+	): IValueIndexPair[] {
 
 		if (type === 'array') return this.byTest((item) => isArray(item));
 

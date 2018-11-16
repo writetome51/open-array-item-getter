@@ -39,6 +39,7 @@
     "@writetome51/array-get-copy": "1.1.0",
     "@writetome51/array-get-adjacent-at": "1.0.1",
     "@writetome51/array-get-by-index": "1.0.0",
+    "@writetome51/array-get-by-indexes": "1.0.1",
     "@writetome51/array-get-filtered-results": "2.0.1",
     "@writetome51/array-get-head-tail": "1.0.3",
     "@writetome51/array-get-between": "1.0.1",
@@ -48,6 +49,7 @@
     "@writetome51/array-get-duplicates": "1.1.0",
     "@writetome51/array-get-unique-items": "1.1.0",
     "@writetome51/array-get-shuffled": "1.0.3",
-    "@writetome51/arrays-match": "1.0.2"
+    "@writetome51/arrays-match": "1.0.2",
+    "value-index-pair-interface": "1.0.1"
   }
 }
