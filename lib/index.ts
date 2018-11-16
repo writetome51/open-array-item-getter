@@ -138,6 +138,7 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	 ***********/
 
 
+	// For explanation of IValueIndexPair, see explanation of byTest().
 	byType(
 		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
 	): IValueIndexPair[] {

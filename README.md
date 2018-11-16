@@ -92,6 +92,8 @@ modify the array.  These are all of them:
     ***********/
 
 
+    // For explanation of IValueIndexPair, see explanation of byTest().
 	byType(
 	    type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
 	):  IValueIndexPair[] 
+    

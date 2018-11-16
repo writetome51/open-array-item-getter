@@ -1,13 +1,19 @@
-import { PublicArrayItemGetter } from '../dist';
+import { PublicArrayItemGetter } from './index';
 import { arraysMatch } from '@writetome51/arrays-match';
 
 
 let get = new PublicArrayItemGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
-// Test 1:  test .item()
-let result = get.item(-1);
+// Test 1:  test .byIndex()
+let result = get.byIndex(-1);
 if (result === 10) console.log('test 1 passed');
 else console.log('test 1 FAILED');
+
+
+// Test 1A:  test .byIndexes()
+result = get.byIndexes([-1, -3, 0, 2]);
+if (arraysMatch(result, [10, 8, 1, 3])) console.log('test 1A passed');
+else console.log('test 1A FAILED');
 
 
 // Test 2:  test .copy()
@@ -94,12 +100,17 @@ else console.log('test 14 FAILED');
 // Test 15: test .byTest()
 get.data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 result = get.byTest((value) => value < 8 && value > 4);
-if (arraysMatch(result, [5, 6, 7])) console.log('test 15 passed');
+if (result.length === 3 && result[0].value && result[0].value === 5 &&
+	result[0].index === 4 && result[1].value === 6 &&
+	result[1].index === 5 && result[2].value === 7 &&
+	result[2].index === 6) console.log('test 15 passed');
 else console.log('test 15 FAILED');
 
 
 // Test 16: test .byType()
-get.data = [1, 2, 3, false, 4, true, 5, 6, 7, 8, true, 9, 10, false];
+get.data = [1, 2, 3, 4, true, 5, 6, 7, 8, false, 9, 10];
 result = get.byType('boolean');
-if (arraysMatch(result, [false, true, true, false])) console.log('test 16 passed');
+if (result.length === 2 && result[0].value &&
+	result[0].value === true && result[0].index === 4 &&
+	result[1].value === false && result[1].index === 9) console.log('test 16 passed');
 else console.log('test 16 FAILED');

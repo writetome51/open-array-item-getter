@@ -113,6 +113,7 @@ var PublicArrayItemGetter = /** @class */ (function (_super) {
         A IValueIndexPair is this object: {value: any, index: integer}
         It's both the value filtered by the testFunction and its index.
      ***********/
+    // For explanation of IValueIndexPair, see explanation of byTest().
     PublicArrayItemGetter.prototype.byType = function (type) {
         if (type === 'array')
             return this.byTest(function (item) { return isArray_notArray_1.isArray(item); });
