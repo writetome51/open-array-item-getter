@@ -1,7 +1,7 @@
 {
-  "name": "@writetome51/public-array-item-getter",
-  "version": "1.0.2",
-  "description": "an array-manipulating typescript/javascript class with methods that return items copied from the array",
+  "name": "@writetome51/public-array-getter",
+  "version": "1.0.0",
+  "description": "An array-manipulating typescript/javascript class with methods that return items copied from the array",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,12 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/writetome51/public-array-item-getter.git"
+    "url": "git+https://github.com/writetome51/public-array-getter.git"
   },
   "keywords": [
     "public",
     "array",
     "get",
+    "return",
     "item",
     "items",
     "getter",
@@ -25,28 +26,28 @@
   "author": "Steve Thompson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/writetome51/public-array-item-getter/issues"
+    "url": "https://github.com/writetome51/public-array-getter/issues"
   },
-  "homepage": "https://github.com/writetome51/public-array-item-getter#readme",
+  "homepage": "https://github.com/writetome51/public-array-getter#readme",
   "devDependencies": {
     "typescript": "^3.0.1"
   },
   "dependencies": {
-    "basic-data-handling": "latest",
-    "@writetome51/public-array-container": "latest",
-    "@writetome51/adjacent-to-value-info-interface": "latest",
-    "@writetome51/array-get-copy": "latest",
-    "@writetome51/array-get-adjacent-at": "latest",
-    "@writetome51/array-get-item": "latest",
-    "@writetome51/array-get-filtered-results": "latest",
-    "@writetome51/array-get-head-tail": "latest",
-    "@writetome51/array-get-between": "latest",
-    "@writetome51/array-get-all-after-before-first": "latest",
-    "@writetome51/array-get-all-after-before-last": "latest",
-    "@writetome51/array-get-adjacent-to-value": "latest",
-    "@writetome51/array-get-duplicates": "latest",
-    "@writetome51/array-get-unique-items": "latest",
-    "@writetome51/array-get-shuffled": "latest",
-    "@writetome51/arrays-match": "latest"
+    "basic-data-handling": "1.0.13",
+    "@writetome51/public-array-container": "1.0.3",
+    "@writetome51/adjacent-to-value-info-interface": "1.0.2",
+    "@writetome51/array-get-copy": "1.1.0",
+    "@writetome51/array-get-adjacent-at": "1.0.1",
+    "@writetome51/array-get-by-index": "1.0.0",
+    "@writetome51/array-get-filtered-results": "2.0.1",
+    "@writetome51/array-get-head-tail": "1.0.3",
+    "@writetome51/array-get-between": "1.0.1",
+    "@writetome51/array-get-all-after-before-first": "1.0.1",
+    "@writetome51/array-get-all-after-before-last": "1.0.1",
+    "@writetome51/array-get-adjacent-to-value": "1.0.1",
+    "@writetome51/array-get-duplicates": "1.1.0",
+    "@writetome51/array-get-unique-items": "1.1.0",
+    "@writetome51/array-get-shuffled": "1.0.3",
+    "@writetome51/arrays-match": "1.0.2"
   }
 }

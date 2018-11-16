@@ -1,19 +1,19 @@
 To include in your project:
 
-import { PublicArrayItemGetter } from '@writetome51/public-array-item-getter';
+import { PublicArrayGetter } from '@writetome51/public-array-item-getter';
 
-The PublicArrayItemGetter class is a dependency of the PublicArray class
+The PublicArrayGetter class is a dependency of the PublicArray class
 ( package:  @writetome51/public-array ).
 
 To instantiate, pass the actual array it will contain into its constructor:
 
-let getter = new PublicArrayItemGetter( [item1, item2, item3,...] );
+let getter = new PublicArrayGetter( [item1, item2, item3,...] );
 
 You can also reset the array by accessing the class 'data' property:
 
 getter.data = [1,2,3,4,...];
 
-PublicArrayItemGetter has methods that return items copied from the array.  None of the methods modify 
+PublicArrayGetter has methods that return items copied from the array.  None of the methods modify 
 the array.  These are all of them:
 
 
