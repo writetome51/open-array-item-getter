@@ -17,7 +17,7 @@ import { getUniqueItems } from '@writetome51/array-get-unique-items';
 import { getShuffled } from '@writetome51/array-get-shuffled';
 
 
-export class PublicArrayItemGetter extends PublicArrayContainer {
+export class PublicArrayGetter extends PublicArrayContainer {
 
 
 	constructor(data: any[] = []) {
@@ -132,9 +132,9 @@ export class PublicArrayItemGetter extends PublicArrayContainer {
 	}
 	/***********
 	 Explanation of byTest(testFunction): IValueIndexPair[]
-	 	Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
-	 	A IValueIndexPair is this object: {value: any, index: integer}
-	 	It's both the value filtered by the testFunction and its index.
+	 Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
+	 A IValueIndexPair is this object: {value: any, index: integer}
+	 It's both the value filtered by the testFunction and its index.
 	 ***********/
 
 

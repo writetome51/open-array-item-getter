@@ -28,40 +28,40 @@ var array_get_adjacent_to_value_1 = require("@writetome51/array-get-adjacent-to-
 var array_get_duplicates_1 = require("@writetome51/array-get-duplicates");
 var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
 var array_get_shuffled_1 = require("@writetome51/array-get-shuffled");
-var PublicArrayItemGetter = /** @class */ (function (_super) {
-    __extends(PublicArrayItemGetter, _super);
-    function PublicArrayItemGetter(data) {
+var PublicArrayGetter = /** @class */ (function (_super) {
+    __extends(PublicArrayGetter, _super);
+    function PublicArrayGetter(data) {
         if (data === void 0) { data = []; }
         return _super.call(this, data) || this;
     }
     // These functions don't modify the array.  They return item(s) copied from the array.
     // Returns independent copy of array.
-    PublicArrayItemGetter.prototype.copy = function () {
+    PublicArrayGetter.prototype.copy = function () {
         return array_get_copy_1.getCopy(this.data);
     };
     // index can be negative or positive.
-    PublicArrayItemGetter.prototype.byIndex = function (index) {
+    PublicArrayGetter.prototype.byIndex = function (index) {
         return array_get_by_index_1.getByIndex(index, this.data);
     };
     // indexes can be negative or positive.
-    PublicArrayItemGetter.prototype.byIndexes = function (indexes) {
+    PublicArrayGetter.prototype.byIndexes = function (indexes) {
         return array_get_by_indexes_1.getByIndexes(indexes, this.data);
     };
-    PublicArrayItemGetter.prototype.head = function (numItems) {
+    PublicArrayGetter.prototype.head = function (numItems) {
         return array_get_head_tail_1.getHead(numItems, this.data);
     };
-    PublicArrayItemGetter.prototype.tail = function (numItems) {
+    PublicArrayGetter.prototype.tail = function (numItems) {
         return array_get_head_tail_1.getTail(numItems, this.data);
     };
     // Returns middle of array, between numItemsToIgnoreAtEachEnd.
-    PublicArrayItemGetter.prototype.between = function (numItemsToIgnoreAtEachEnd) {
+    PublicArrayGetter.prototype.between = function (numItemsToIgnoreAtEachEnd) {
         return array_get_between_1.getBetween(numItemsToIgnoreAtEachEnd, this.data);
     };
     // Returns adjacent items.  startingIndex can be negative or positive.
-    PublicArrayItemGetter.prototype.adjacentAt = function (startingIndex, numItems) {
+    PublicArrayGetter.prototype.adjacentAt = function (startingIndex, numItems) {
         return array_get_adjacent_at_1.getAdjacentAt(startingIndex, numItems, this.data);
     };
-    PublicArrayItemGetter.prototype.adjacentToValue = function (info) {
+    PublicArrayGetter.prototype.adjacentToValue = function (info) {
         return array_get_adjacent_to_value_1.getAdjacentToValue(info, this.data);
     };
     /********
@@ -77,49 +77,49 @@ var PublicArrayItemGetter = /** @class */ (function (_super) {
      }
      *********/
     // value cannot be object
-    PublicArrayItemGetter.prototype.allAfterFirst = function (value) {
+    PublicArrayGetter.prototype.allAfterFirst = function (value) {
         return array_get_all_after_before_first_1.getAllAfterFirst(value, this.data);
     };
     // value cannot be object
-    PublicArrayItemGetter.prototype.allBeforeFirst = function (value) {
+    PublicArrayGetter.prototype.allBeforeFirst = function (value) {
         return array_get_all_after_before_first_1.getAllBeforeFirst(value, this.data);
     };
     // value cannot be object
-    PublicArrayItemGetter.prototype.allAfterLast = function (value) {
+    PublicArrayGetter.prototype.allAfterLast = function (value) {
         return array_get_all_after_before_last_1.getAllAfterLast(value, this.data);
     };
     // value cannot be object
-    PublicArrayItemGetter.prototype.allBeforeLast = function (value) {
+    PublicArrayGetter.prototype.allBeforeLast = function (value) {
         return array_get_all_after_before_last_1.getAllBeforeLast(value, this.data);
     };
     // returns no duplicates.
-    PublicArrayItemGetter.prototype.uniqueItems = function () {
+    PublicArrayGetter.prototype.uniqueItems = function () {
         return array_get_unique_items_1.getUniqueItems(this.data);
     };
     // returns every instance of a duplicate, so you may get multiple instances.
-    PublicArrayItemGetter.prototype.duplicates = function () {
+    PublicArrayGetter.prototype.duplicates = function () {
         return array_get_duplicates_1.getDuplicates(this.data);
     };
-    PublicArrayItemGetter.prototype.shuffled = function () {
+    PublicArrayGetter.prototype.shuffled = function () {
         return array_get_shuffled_1.getShuffled(this.data);
     };
     // testFunction tests currentValue, and returns boolean based on if it passes.
-    PublicArrayItemGetter.prototype.byTest = function (testFunction) {
+    PublicArrayGetter.prototype.byTest = function (testFunction) {
         return array_get_filtered_results_1.getFilteredResults(testFunction, this.data);
     };
     /***********
      Explanation of byTest(testFunction): IValueIndexPair[]
-        Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
-        A IValueIndexPair is this object: {value: any, index: integer}
-        It's both the value filtered by the testFunction and its index.
+     Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
+     A IValueIndexPair is this object: {value: any, index: integer}
+     It's both the value filtered by the testFunction and its index.
      ***********/
     // For explanation of IValueIndexPair, see explanation of byTest().
-    PublicArrayItemGetter.prototype.byType = function (type) {
+    PublicArrayGetter.prototype.byType = function (type) {
         if (type === 'array')
             return this.byTest(function (item) { return isArray_notArray_1.isArray(item); });
         else
             return this.byTest(function (item) { return typeof item === type; });
     };
-    return PublicArrayItemGetter;
+    return PublicArrayGetter;
 }(public_array_container_1.PublicArrayContainer));
-exports.PublicArrayItemGetter = PublicArrayItemGetter;
+exports.PublicArrayGetter = PublicArrayGetter;

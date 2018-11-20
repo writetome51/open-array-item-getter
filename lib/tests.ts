@@ -1,8 +1,8 @@
-import { PublicArrayItemGetter } from './index';
+import { PublicArrayGetter } from './index';
 import { arraysMatch } from '@writetome51/arrays-match';
 
 
-let get = new PublicArrayItemGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let get = new PublicArrayGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 // Test 1:  test .byIndex()
 let result = get.byIndex(-1);

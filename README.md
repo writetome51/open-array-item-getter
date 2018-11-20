@@ -4,11 +4,11 @@ To include in your project:
 
 To instantiate, pass the actual array it will contain into its constructor:
 
-    let getter = new PublicArrayGetter( [item1, item2, item3,...] );
+    let get = new PublicArrayGetter( [item1, item2, item3,...] );
 
 You can also reset the array by accessing the class 'data' property:
 
-    getter.data = [1,2,3,4,...];
+    get.data = [1,2,3,4,...];
 
 PublicArrayGetter has methods that return items copied from the array.  None of the methods   
 modify the array.  These are all of them:
@@ -26,13 +26,15 @@ modify the array.  These are all of them:
     byIndexes(indexes): any[]
 
 
+    // returns numItems from beginning
 	head(numItems): any[]
 
 
+    // returns numItems from end
 	tail(numItems): any[]
 
 
-    // Returns middle of array, between numItemsToIgnoreAtEachEnd:
+    // Returns middle of array, between numItemsToIgnoreAtEachEnd
 	between(numItemsToIgnoreAtEachEnd): any[]
 
 
@@ -52,6 +54,11 @@ modify the array.  These are all of them:
             		items to return.  If offset is zero, the selection will begin with value.)
             howMany: integer greater than zero (it's how many adjacent items to return)
         }
+        
+        Example:
+             let get = new PublicArrayGetter( [1,2,3,4,5,6,7,8,9,10] );
+             let numbers = get.adjacentToValue({value:5, offset: -2, howMany:3});
+             // numbers is now [3,4,5]
     *********/
 	
 
@@ -80,6 +87,7 @@ modify the array.  These are all of them:
 	duplicates(): any[]
 
 
+    // return new, shuffled version of the array
 	shuffled(): any[]
 
 

@@ -3,7 +3,7 @@ import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interf
 import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
 
 
-export declare class PublicArrayItemGetter extends PublicArrayContainer {
+export declare class PublicArrayGetter extends PublicArrayContainer {
 	constructor(data?: any[]);
 
 
@@ -73,7 +73,5 @@ export declare class PublicArrayItemGetter extends PublicArrayContainer {
 	 ***********/
 
 
-	byType(
-		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
-	): IValueIndexPair[];
+	byType(type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'): IValueIndexPair[];
 }

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./index");
 var arrays_match_1 = require("@writetome51/arrays-match");
-var get = new index_1.PublicArrayItemGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+var get = new index_1.PublicArrayGetter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 // Test 1:  test .byIndex()
 var result = get.byIndex(-1);
 if (result === 10)
