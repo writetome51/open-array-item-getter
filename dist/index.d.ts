@@ -4,33 +4,33 @@ import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
 
 
 export declare class PublicArrayGetter extends PublicArrayContainer {
+
 	constructor(data?: any[]);
 
 
 	copy(): any[];
 
 
-	byIndex(index: any): any;
+	byIndex(index: number): any;
 
 
-	byIndexes(indexes: any): any[];
+	byIndexes(indexes: number[]): any[];
 
 
-	head(numItems: any): any[];
+	head(numItems: number): any[];
 
 
-	tail(numItems: any): any[];
+	tail(numItems: number): any[];
 
 
 	between(numItemsToIgnoreAtEachEnd: number): any[];
 
 
-	adjacentAt(startingIndex: any, numItems: any): any[];
+	adjacentAt(startingIndex: number, numItems: number): any[];
 
 
 	adjacentToValue(info: IAdjacentToValueInfo): any[];
 	/********
-	 Explanation of adjacentToValue(info: IAdjacentToValueInfo): any[]
 	 Returns adjacent items including, or near, a particular value.
 	 Only applies to the first instance of value found in array.
 	 The parameter 'info' is an object that looks like this:
@@ -64,14 +64,17 @@ export declare class PublicArrayGetter extends PublicArrayContainer {
 	shuffled(): any[];
 
 
-	byTest(testFunction: ((currentValue: any, currentIndex?: any, array?: any) => boolean)): IValueIndexPair[];
+	byTest(
+		testFunction: ((currentValue: any, currentIndex?: number, array?: any[]) => boolean)
+	): IValueIndexPair[];
 	/***********
-	 Explanation of byTest(testFunction): IValueIndexPair[]
 	 Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
 	 A IValueIndexPair is this object: {value: any, index: integer}
 	 It's both the value filtered by the testFunction and its index.
 	 ***********/
 
 
-	byType(type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'): IValueIndexPair[];
+	byType(
+		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
+	): IValueIndexPair[];
 }

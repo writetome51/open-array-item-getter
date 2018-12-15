@@ -29,18 +29,21 @@ export class PublicArrayGetter extends PublicArrayContainer {
 
 
 	// Returns independent copy of array.
+
 	copy(): any[] {
 		return getCopy(this.data);
 	}
 
 
 	// index can be negative or positive.
+
 	byIndex(index): any {
 		return getByIndex(index, this.data);
 	}
 
 
 	// indexes can be negative or positive.
+
 	byIndexes(indexes): any[] {
 		return getByIndexes(indexes, this.data);
 	}
@@ -57,15 +60,23 @@ export class PublicArrayGetter extends PublicArrayContainer {
 
 
 	// Returns middle of array, between numItemsToIgnoreAtEachEnd.
+
 	between(numItemsToIgnoreAtEachEnd: number): any[] {
 		return getBetween(numItemsToIgnoreAtEachEnd, this.data);
 	}
 
 
 	// Returns adjacent items.  startingIndex can be negative or positive.
+
 	adjacentAt(startingIndex, numItems): any[] {
 		return getAdjacentAt(startingIndex, numItems, this.data);
 	}
+
+
+	/**************************
+	 NOTICE: For all the methods below, any parameter called 'value' cannot be an object.
+	 This does not include arrays. Arrays are OK, as long as they don't contain objects.
+	 **************************/
 
 
 	adjacentToValue(info: IAdjacentToValueInfo): any[] {
@@ -85,37 +96,33 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	 *********/
 
 
-	// value cannot be object
 	allAfterFirst(value: any): any[] {
 		return getAllAfterFirst(value, this.data);
 	}
 
 
-	// value cannot be object
 	allBeforeFirst(value: any): any[] {
 		return getAllBeforeFirst(value, this.data);
 	}
 
 
-	// value cannot be object
 	allAfterLast(value: any): any[] {
 		return getAllAfterLast(value, this.data);
 	}
 
 
-	// value cannot be object
 	allBeforeLast(value: any): any[] {
 		return getAllBeforeLast(value, this.data);
 	}
 
 
-	// returns no duplicates.
 	uniqueItems(): any[] {
 		return getUniqueItems(this.data);
 	}
 
 
-	// returns every instance of a duplicate, so you may get multiple instances.
+	// Returns every instance of a duplicate, so you may get multiple instances.
+
 	duplicates(): any[] {
 		return getDuplicates(this.data);
 	}
@@ -126,19 +133,21 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	}
 
 
+	/******************************
+	 The last 2 methods below return an array of IValueIndexPairs.
+	 A IValueIndexPair is this object: {value: any, index: integer}
+	 It represents an array item's value and index.
+	 ******************************/
+
+
+	// Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
 	// testFunction tests currentValue, and returns boolean based on if it passes.
+
 	byTest(testFunction: ((currentValue, currentIndex?, array?) => boolean)): IValueIndexPair[] {
 		return getFilteredResults(testFunction, this.data);
 	}
-	/***********
-	 Explanation of byTest(testFunction): IValueIndexPair[]
-	 Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
-	 A IValueIndexPair is this object: {value: any, index: integer}
-	 It's both the value filtered by the testFunction and its index.
-	 ***********/
 
 
-	// For explanation of IValueIndexPair, see explanation of byTest().
 	byType(
 		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
 	): IValueIndexPair[] {

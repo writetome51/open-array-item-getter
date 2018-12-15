@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/public-array-getter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An array-manipulating typescript/javascript class with methods that return items copied from the array",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/writetome51/public-array-getter#readme",
   "devDependencies": {
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "@writetome51/arrays-match": "~1.0.2"
   },
   "dependencies": {
     "basic-data-handling": "~1.0.13",
@@ -49,7 +50,6 @@
     "@writetome51/array-get-duplicates": "~1.1.0",
     "@writetome51/array-get-unique-items": "~1.1.0",
     "@writetome51/array-get-shuffled": "~1.0.3",
-    "@writetome51/arrays-match": "~1.0.2",
     "value-index-pair-interface": "~1.0.1"
   }
 }

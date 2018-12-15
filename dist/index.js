@@ -61,6 +61,10 @@ var PublicArrayGetter = /** @class */ (function (_super) {
     PublicArrayGetter.prototype.adjacentAt = function (startingIndex, numItems) {
         return array_get_adjacent_at_1.getAdjacentAt(startingIndex, numItems, this.data);
     };
+    /**************************
+     NOTICE: For all the methods below, any parameter called 'value' cannot be an object.
+     This does not include arrays. Arrays are OK, as long as they don't contain objects.
+     **************************/
     PublicArrayGetter.prototype.adjacentToValue = function (info) {
         return array_get_adjacent_to_value_1.getAdjacentToValue(info, this.data);
     };
@@ -76,44 +80,38 @@ var PublicArrayGetter = /** @class */ (function (_super) {
         howMany: integer greater than zero (it's how many adjacent items to return)
      }
      *********/
-    // value cannot be object
     PublicArrayGetter.prototype.allAfterFirst = function (value) {
         return array_get_all_after_before_first_1.getAllAfterFirst(value, this.data);
     };
-    // value cannot be object
     PublicArrayGetter.prototype.allBeforeFirst = function (value) {
         return array_get_all_after_before_first_1.getAllBeforeFirst(value, this.data);
     };
-    // value cannot be object
     PublicArrayGetter.prototype.allAfterLast = function (value) {
         return array_get_all_after_before_last_1.getAllAfterLast(value, this.data);
     };
-    // value cannot be object
     PublicArrayGetter.prototype.allBeforeLast = function (value) {
         return array_get_all_after_before_last_1.getAllBeforeLast(value, this.data);
     };
-    // returns no duplicates.
     PublicArrayGetter.prototype.uniqueItems = function () {
         return array_get_unique_items_1.getUniqueItems(this.data);
     };
-    // returns every instance of a duplicate, so you may get multiple instances.
+    // Returns every instance of a duplicate, so you may get multiple instances.
     PublicArrayGetter.prototype.duplicates = function () {
         return array_get_duplicates_1.getDuplicates(this.data);
     };
     PublicArrayGetter.prototype.shuffled = function () {
         return array_get_shuffled_1.getShuffled(this.data);
     };
+    /******************************
+     The last 2 methods below return an array of IValueIndexPairs.
+     A IValueIndexPair is this object: {value: any, index: integer}
+     It represents an array item's value and index.
+     ******************************/
+    // Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
     // testFunction tests currentValue, and returns boolean based on if it passes.
     PublicArrayGetter.prototype.byTest = function (testFunction) {
         return array_get_filtered_results_1.getFilteredResults(testFunction, this.data);
     };
-    /***********
-     Explanation of byTest(testFunction): IValueIndexPair[]
-     Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
-     A IValueIndexPair is this object: {value: any, index: integer}
-     It's both the value filtered by the testFunction and its index.
-     ***********/
-    // For explanation of IValueIndexPair, see explanation of byTest().
     PublicArrayGetter.prototype.byType = function (type) {
         if (type === 'array')
             return this.byTest(function (item) { return isArray_notArray_1.isArray(item); });
