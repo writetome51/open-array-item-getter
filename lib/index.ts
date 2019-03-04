@@ -6,11 +6,11 @@ import { getCopy } from '@writetome51/array-get-copy';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
 import { getByIndex } from '@writetome51/array-get-by-index';
 import { getByIndexes } from '@writetome51/array-get-by-indexes';
-import { getFilteredResults } from '@writetome51/array-get-filtered-results';
+import { getByTest } from '@writetome51/array-get-by-test';
 import { getHead, getTail } from '@writetome51/array-get-head-tail';
 import { getBetween } from '@writetome51/array-get-between';
-import { getAllAfterFirst, getAllBeforeFirst } from '@writetome51/array-get-all-after-before-first';
-import { getAllAfterLast, getAllBeforeLast } from '@writetome51/array-get-all-after-before-last';
+import { getAllAfterFirst, getAllAfterLast } from '@writetome51/array-get-all-after';
+import { getAllBeforeFirst, getAllBeforeLast } from '@writetome51/array-get-all-before';
 import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
 import { getDuplicates } from '@writetome51/array-get-duplicates';
 import { getUniqueItems } from '@writetome51/array-get-unique-items';
@@ -91,27 +91,27 @@ export class PublicArrayGetter extends PublicArrayContainer {
         value: any except object (the value to search for in the array),
         offset: integer (tells function where, in relation to value, to begin selecting adjacent
         		items to return.  If offset is zero, the selection will begin with value.)
-        howMany: integer greater than zero (it's how many adjacent items to return)
+        howMany: integer (number of adjacent items to return).
      }
 	 *********/
 
 
-	allAfterFirst(value: any): any[] {
+	allAfterFirst(value): any[] {
 		return getAllAfterFirst(value, this.data);
 	}
 
 
-	allBeforeFirst(value: any): any[] {
+	allBeforeFirst(value): any[] {
 		return getAllBeforeFirst(value, this.data);
 	}
 
 
-	allAfterLast(value: any): any[] {
+	allAfterLast(value): any[] {
 		return getAllAfterLast(value, this.data);
 	}
 
 
-	allBeforeLast(value: any): any[] {
+	allBeforeLast(value): any[] {
 		return getAllBeforeLast(value, this.data);
 	}
 
@@ -144,7 +144,7 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	// testFunction tests currentValue, and returns boolean based on if it passes.
 
 	byTest(testFunction: ((currentValue, currentIndex?, array?) => boolean)): IValueIndexPair[] {
-		return getFilteredResults(testFunction, this.data);
+		return getByTest(testFunction, this.data);
 	}
 
 

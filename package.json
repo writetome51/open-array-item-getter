@@ -31,25 +31,25 @@
   "homepage": "https://github.com/writetome51/public-array-getter#readme",
   "devDependencies": {
     "typescript": "^3.0.1",
-    "@writetome51/arrays-match": "~1.0.3"
+    "@writetome51/arrays-match": "~1.0.5"
   },
   "dependencies": {
-    "basic-data-handling": "~1.0.13",
-    "@writetome51/public-array-container": "~2.0.1",
+    "basic-data-handling": "~1.0.15",
+    "@writetome51/public-array-container": "~2.0.2",
     "@writetome51/adjacent-to-value-info-interface": "~1.0.2",
-    "@writetome51/array-get-copy": "~1.1.0",
-    "@writetome51/array-get-adjacent-at": "~1.0.1",
-    "@writetome51/array-get-by-index": "~1.0.0",
-    "@writetome51/array-get-by-indexes": "~1.0.1",
-    "@writetome51/array-get-filtered-results": "~2.0.1",
-    "@writetome51/array-get-head-tail": "~1.0.3",
-    "@writetome51/array-get-between": "~1.0.1",
-    "@writetome51/array-get-all-after-before-first": "~1.0.1",
-    "@writetome51/array-get-all-after-before-last": "~1.0.1",
-    "@writetome51/array-get-adjacent-to-value": "~1.0.1",
-    "@writetome51/array-get-duplicates": "~1.1.0",
-    "@writetome51/array-get-unique-items": "~1.1.0",
-    "@writetome51/array-get-shuffled": "~1.0.3",
+    "@writetome51/array-get-copy": "~1.1.2",
+    "@writetome51/array-get-adjacent-at": "~1.0.3",
+    "@writetome51/array-get-by-index": "~1.0.2",
+    "@writetome51/array-get-by-indexes": "~1.0.3",
+    "@writetome51/array-get-by-test": "~1.0.0",
+    "@writetome51/array-get-head-tail": "~1.0.5",
+    "@writetome51/array-get-between": "~1.0.3",
+    "@writetome51/array-get-all-after": "~1.0.0",
+    "@writetome51/array-get-all-before": "~1.0.0",
+    "@writetome51/array-get-adjacent-to-value": "~1.0.3",
+    "@writetome51/array-get-duplicates": "~1.1.2",
+    "@writetome51/array-get-unique-items": "~1.1.2",
+    "@writetome51/array-get-shuffled": "~1.0.5",
     "value-index-pair-interface": "~1.0.1"
   }
 }

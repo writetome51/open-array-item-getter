@@ -3,20 +3,9 @@
 An array-manipulating Typescript/Javascript class with methods that return items copied   
 from the array. None of the methods modify the array.
 
-## Installation
 
-You must have npm installed first. Then, in the command line:
 
-    npm install @writetome51/public-array-getter
-
-## Loading
-
-    // if using Typescript:
-    import { PublicArrayGetter } from '@writetome51/public-array-getter';
-    // if using ES5 Javascript:
-    var PublicArrayGetter = require('@writetome51/public-array-getter').PublicArrayGetter;
-
-To instantiate, pass the actual array it will contain into its constructor:
+<b>To instantiate</b>, pass the array it will contain into its constructor:
 
     let get = new PublicArrayGetter( [item1, item2, item3,...] );
 
@@ -26,10 +15,11 @@ You can also reset the array by accessing the class `.data` property:
 
 
 ## Properties
+```
+data : any[]  // the actual array
 
-	data : any[] (read-writable) // the actual array
-
-	className: string (read-only)
+className: string (read-only)
+```
 
 
 ## Methods
@@ -50,10 +40,10 @@ tail(numItems): any[]
     // returns numItems from end of this.data
 
 between(numItemsToIgnoreAtEachEnd): any[]
-    // returns middle of this.data, between numItemsToIgnoreAtEachEnd
+    // Returns everything between `numItemsToIgnoreAtEachEnd` in this.data
 
-adjacentAt(startingIndex, numItems): any[]
-    // Beginning at startingIndex, returns adjacent numItems.  
+adjacentAt(startingIndex, howMany): any[]
+    // Beginning at `startingIndex`, returns `howMany` adjacent items from this.data.
     // startingIndex can be negative or positive.
 ```       
 NOTICE: For all the methods below, any parameter called `value` cannot be an object.  
@@ -154,6 +144,19 @@ protected   _runMethod_and_returnThis(
 ## Inheritance Chain
 
 PublicArrayGetter<--[PublicArrayContainer](https://github.com/writetome51/public-array-container#publicarraycontainer)<--[BaseClass](https://github.com/writetome51/typescript-base-class#baseclass)
+
+## Installation
+
+You must have npm installed first. Then, in the command line:
+
+    npm install @writetome51/public-array-getter
+
+## Loading
+
+    // if using Typescript:
+    import { PublicArrayGetter } from '@writetome51/public-array-getter';
+    // if using ES5 Javascript:
+    var PublicArrayGetter = require('@writetome51/public-array-getter').PublicArrayGetter;
 
 
 ## License

@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -19,11 +19,11 @@ var array_get_copy_1 = require("@writetome51/array-get-copy");
 var array_get_adjacent_at_1 = require("@writetome51/array-get-adjacent-at");
 var array_get_by_index_1 = require("@writetome51/array-get-by-index");
 var array_get_by_indexes_1 = require("@writetome51/array-get-by-indexes");
-var array_get_filtered_results_1 = require("@writetome51/array-get-filtered-results");
+var array_get_by_test_1 = require("@writetome51/array-get-by-test");
 var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var array_get_between_1 = require("@writetome51/array-get-between");
-var array_get_all_after_before_first_1 = require("@writetome51/array-get-all-after-before-first");
-var array_get_all_after_before_last_1 = require("@writetome51/array-get-all-after-before-last");
+var array_get_all_after_1 = require("@writetome51/array-get-all-after");
+var array_get_all_before_1 = require("@writetome51/array-get-all-before");
 var array_get_adjacent_to_value_1 = require("@writetome51/array-get-adjacent-to-value");
 var array_get_duplicates_1 = require("@writetome51/array-get-duplicates");
 var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
@@ -77,20 +77,20 @@ var PublicArrayGetter = /** @class */ (function (_super) {
         value: any except object (the value to search for in the array),
         offset: integer (tells function where, in relation to value, to begin selecting adjacent
                 items to return.  If offset is zero, the selection will begin with value.)
-        howMany: integer greater than zero (it's how many adjacent items to return)
+        howMany: integer (number of adjacent items to return).
      }
      *********/
     PublicArrayGetter.prototype.allAfterFirst = function (value) {
-        return array_get_all_after_before_first_1.getAllAfterFirst(value, this.data);
+        return array_get_all_after_1.getAllAfterFirst(value, this.data);
     };
     PublicArrayGetter.prototype.allBeforeFirst = function (value) {
-        return array_get_all_after_before_first_1.getAllBeforeFirst(value, this.data);
+        return array_get_all_before_1.getAllBeforeFirst(value, this.data);
     };
     PublicArrayGetter.prototype.allAfterLast = function (value) {
-        return array_get_all_after_before_last_1.getAllAfterLast(value, this.data);
+        return array_get_all_after_1.getAllAfterLast(value, this.data);
     };
     PublicArrayGetter.prototype.allBeforeLast = function (value) {
-        return array_get_all_after_before_last_1.getAllBeforeLast(value, this.data);
+        return array_get_all_before_1.getAllBeforeLast(value, this.data);
     };
     PublicArrayGetter.prototype.uniqueItems = function () {
         return array_get_unique_items_1.getUniqueItems(this.data);
@@ -110,7 +110,7 @@ var PublicArrayGetter = /** @class */ (function (_super) {
     // Almost exactly like Array.filter(), except it returns array of IValueIndexPairs.
     // testFunction tests currentValue, and returns boolean based on if it passes.
     PublicArrayGetter.prototype.byTest = function (testFunction) {
-        return array_get_filtered_results_1.getFilteredResults(testFunction, this.data);
+        return array_get_by_test_1.getByTest(testFunction, this.data);
     };
     PublicArrayGetter.prototype.byType = function (type) {
         if (type === 'array')
