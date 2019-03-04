@@ -3,44 +3,51 @@
 An array-manipulating Typescript/Javascript class with methods that return items copied   
 from the array. None of the methods modify the array.
 
-
-
-<b>To instantiate</b>, pass the array it will contain into its constructor:
-
-    let get = new PublicArrayGetter( [item1, item2, item3,...] );
+## Constructor
+```
+constructor(data? = []) // 'data' becomes the array it contains.
+```
 
 You can also reset the array by accessing the class `.data` property:
-
-    get.data = [1,2,3,4,...];
-
+```
+this.data = [1,2,3,4];
+```
 
 ## Properties
 ```
 data : any[]  // the actual array
 
 className: string (read-only)
+    // Not important.  Inherited from BaseClass.
 ```
 
 
 ## Methods
+<details>
+<summary>view methods</summary>
+
 ```
 copy(): any[]
     // returns independent copy of this.data .
 
 byIndex(index): any
-    // returns item identified by index.  index can be negative or positive.
+    // returns item identified by `index`.  `index` can be negative or positive.
     
 byIndexes(indexes): any[]
-    // returns items identified by indexes.  indexes can be negative or positive.
+    // returns items identified by `indexes`.  `indexes` can be negative or positive.
 
 head(numItems): any[]
-    // returns numItems from beginning of this.data
+    // returns `numItems` from beginning of this.data
 
 tail(numItems): any[]
-    // returns numItems from end of this.data
+    // returns `numItems` from end of this.data
 
 between(numItemsToIgnoreAtEachEnd): any[]
     // Returns everything between `numItemsToIgnoreAtEachEnd` in this.data
+    // Example:
+    // let get = new PublicArrayGetter( [1,2,3,4,5,6,7,8,9,10] );
+    // get.between(2); // returns everything between first 2 and last 2 items.
+    // --> [3,4,5,6,7,8]
 
 adjacentAt(startingIndex, howMany): any[]
     // Beginning at `startingIndex`, returns `howMany` adjacent items from this.data.
@@ -49,36 +56,37 @@ adjacentAt(startingIndex, howMany): any[]
 NOTICE: For all the methods below, any parameter called `value` cannot be an object.  
 This does not include arrays. Arrays are OK, as long as they don't contain objects.
 ```
-adjacentToValue(info: IAdjacentToValueInfo): any[]
-    /************
-    Returns adjacent items including, or near, a particular value.
-    Only applies to the first instance of value found in array.
-    The parameter 'info' is an object that looks like this:
+adjacentToValue(
     {
-        value: any except object (the value to search for in this.data),
-        offset: integer (tells function where, in relation to value, to begin selecting 
-                adjacent items to return.  If offset is zero, the selection will begin 
-                with value.)
-        howMany: integer greater than zero (it's how many adjacent items to return)
+        value: any except object,
+        offset: integer,
+        howMany: integer greater than zero
     }
-
+): any[]
+    /************
+    Returns `howMany` adjacent items from this.data, starting with, or close to, `value`.
+    Exactly where the selection starts is decided by `offset`, which is the position,
+    relative to `value`, where to begin the selection. For example, if `offset` is 0,
+    then the selection begins at `value`.  If -1, it begins one place to the left of
+    `value`.  If 1, it begins one place to the right.
+    Note: the function only works with the first found instance of `value`.
     Example:
         let get = new PublicArrayGetter( [1,2,3,4,5,6,7,8,9,10] );
         let numbers = get.adjacentToValue({value:5, offset: -2, howMany:3});
         // numbers is now [3,4,5]
     *************/
 
-allAfterFirst(value: any): any[]
-    // returns all items after first instance of value.
+allAfterFirst(value): any[]
+    // returns all items after first instance of `value`.
 
-allBeforeFirst(value: any): any[]
-    // returns all items before first instance of value.
+allBeforeFirst(value): any[]
+    // returns all items before first instance of `value`.
 
-allAfterLast(value: any): any[]
-    // returns all items after last instance of value.
+allAfterLast(value): any[]
+    // returns all items after last instance of `value`.
 
-allBeforeLast(value: any): any[]
-    // returns all items before last instance of value.
+allBeforeLast(value): any[]
+    // returns all items before last instance of `value`.
 
 uniqueItems(): any[]
     // returns no duplicates.
@@ -99,9 +107,13 @@ byTest(testFunction: ((currentItem, currentIndex?, array?) => boolean)): IValueI
 byType(
     type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
 ):  IValueIndexPair[] 
-    // returns all items that match the passed type. 
-    // The passed type can be any one of the possible type hints above.
+    // returns all items that match `type`. 
+    // The passed `type` can be any one of the possible type hints above.
 
+``` 
+The methods below are not important to know about in order to use this  
+class.  They're inherited from [BaseClass](https://github.com/writetome51/typescript-base-class#baseclass) .
+``` 
 protected   _createGetterAndOrSetterForEach(
 		propertyNames: string[],
 		configuration: IGetterSetterConfiguration
@@ -140,6 +152,7 @@ protected   _runMethod_and_returnThis(
     additionalAction?: Function // takes the result returned by method as an argument.
 ) : this
 ```
+</details>
 
 ## Inheritance Chain
 
