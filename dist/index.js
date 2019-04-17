@@ -26,9 +26,8 @@ var array_get_duplicates_1 = require("@writetome51/array-get-duplicates");
 var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var array_get_shuffled_1 = require("@writetome51/array-get-shuffled");
 var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
-var is_array_not_array_1 = require("@writetome51/is-array-not-array");
-var is_object_not_object_1 = require("@writetome51/is-object-not-object");
 var public_array_container_1 = require("@writetome51/public-array-container");
+var public_array_container_by_type_implementation_1 = require("@writetome51/public-array-container-by-type-implementation");
 var PublicArrayGetter = /** @class */ (function (_super) {
     __extends(PublicArrayGetter, _super);
     function PublicArrayGetter(data) {
@@ -116,17 +115,7 @@ var PublicArrayGetter = /** @class */ (function (_super) {
     // Here, 'null' is considered its own type, separate from 'object'.
     // You can also pass 'array' as a type.  Passing 'object' will match with objects and arrays.
     PublicArrayGetter.prototype.byType = function (type) {
-        // @ts-ignore
-        if (['array', 'object', 'null'].includes(type)) {
-            if (type === 'array')
-                return this.byTest(function (item) { return is_array_not_array_1.isArray(item); });
-            if (type === 'object')
-                return this.byTest(function (item) { return is_object_not_object_1.isObject(item); });
-            if (type === 'null')
-                return this.byTest(function (item) { return item === null; });
-        }
-        else
-            return this.byTest(function (item) { return typeof item === type; });
+        return public_array_container_by_type_implementation_1._publicArrayContainer_byType_implementation(type, this);
     };
     return PublicArrayGetter;
 }(public_array_container_1.PublicArrayContainer));

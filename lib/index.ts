@@ -12,10 +12,10 @@ import { getHead, getTail } from '@writetome51/array-get-head-tail';
 import { getShuffled } from '@writetome51/array-get-shuffled';
 import { getUniqueItems } from '@writetome51/array-get-unique-items';
 import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
-import { isArray } from '@writetome51/is-array-not-array';
-import { isObject } from '@writetome51/is-object-not-object';
 import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
 import { PublicArrayContainer } from '@writetome51/public-array-container';
+import { _publicArrayContainer_byType_implementation }
+	from '@writetome51/public-array-container-by-type-implementation';
 
 
 export class PublicArrayGetter extends PublicArrayContainer {
@@ -83,6 +83,8 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	adjacentToValue(info: IAdjacentToValueInfo): any[] {
 		return getAdjacentToValue(info, this.data);
 	}
+
+
 	/********
 	 Explanation of adjacentToValue(info: IAdjacentToValueInfo): any[]
 	 Returns adjacent items including, or near, a particular value.
@@ -155,13 +157,8 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	byType(
 		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined' | 'null'
 	): IValueIndexPair[] {
-		// @ts-ignore
-		if (['array', 'object', 'null'].includes(type)) {
-			if (type === 'array') return this.byTest((item) => isArray(item));
-			if (type === 'object') return this.byTest((item) => isObject(item));
-			if (type === 'null') return this.byTest((item) => item === null);
-		}
-		else return this.byTest((item) => typeof item === type);
+
+		return _publicArrayContainer_byType_implementation(type, this);
 	}
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@writetome51/public-array-getter",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "An array-manipulating Typescript/Javascript class with methods that return items copied from the array",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,9 +33,8 @@
     "@writetome51/arrays-match": "~1.0.5"
   },
   "dependencies": {
-    "@writetome51/is-array-not-array": "~1.0.0",
-    "@writetome51/is-object-not-object": "~1.0.0",
     "@writetome51/public-array-container": "~2.0.3",
+    "@writetome51/public-array-container-by-type-implementation": "~1.0.0",
     "@writetome51/adjacent-to-value-info-interface": "~1.0.2",
     "@writetome51/array-get-copy": "~1.1.3",
     "@writetome51/array-get-adjacent-at": "~1.0.4",
