@@ -115,3 +115,29 @@ if (result.length === 2 && result[0].value &&
     console.log('test 16 passed');
 else
     console.log('test 16 FAILED');
+// Test 17: test .byType()
+get.data = [null, [1, 2], {}, 'string', 1, true, null, undefined, function () { return 1 === 1; }];
+result = get.byType('null');
+if (result.length === 2 &&
+    result[0].value === null && result[0].index === 0 &&
+    result[1].value === null && result[1].index === 6)
+    console.log('test 17 passed');
+else
+    console.log('test 17 FAILED');
+// Test 18: test .byType()
+get.data = [null, [1, 2], { prop1: 1 }, 'string', 1, true, null, undefined, function () { return 1 === 1; }];
+result = get.byType('object');
+if (result.length === 2 &&
+    arrays_match_1.arraysMatch(result[0].value, [1, 2]) && result[0].index === 1 &&
+    result[1].value.prop1 === 1 && result[1].index === 2)
+    console.log('test 18 passed');
+else
+    console.log('test 18 FAILED');
+// Test 19: test .byType()
+get.data = [null, [1, 2], { prop1: 1 }, 'string', 1, true, null, undefined, function () { return 1 === 1; }];
+result = get.byType('undefined');
+if (result.length === 1 &&
+    result[0].value === undefined && result[0].index === 7)
+    console.log('test 19 passed');
+else
+    console.log('test 19 FAILED');

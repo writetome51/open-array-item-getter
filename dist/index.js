@@ -13,21 +13,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var isArray_notArray_1 = require("basic-data-handling/isArray_notArray");
-var public_array_container_1 = require("@writetome51/public-array-container");
-var array_get_copy_1 = require("@writetome51/array-get-copy");
 var array_get_adjacent_at_1 = require("@writetome51/array-get-adjacent-at");
-var array_get_by_index_1 = require("@writetome51/array-get-by-index");
-var array_get_by_indexes_1 = require("@writetome51/array-get-by-indexes");
-var array_get_by_test_1 = require("@writetome51/array-get-by-test");
-var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
-var array_get_between_1 = require("@writetome51/array-get-between");
 var array_get_all_after_1 = require("@writetome51/array-get-all-after");
 var array_get_all_before_1 = require("@writetome51/array-get-all-before");
 var array_get_adjacent_to_value_1 = require("@writetome51/array-get-adjacent-to-value");
+var array_get_between_1 = require("@writetome51/array-get-between");
+var array_get_by_index_1 = require("@writetome51/array-get-by-index");
+var array_get_by_indexes_1 = require("@writetome51/array-get-by-indexes");
+var array_get_by_test_1 = require("@writetome51/array-get-by-test");
+var array_get_copy_1 = require("@writetome51/array-get-copy");
 var array_get_duplicates_1 = require("@writetome51/array-get-duplicates");
-var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
+var array_get_head_tail_1 = require("@writetome51/array-get-head-tail");
 var array_get_shuffled_1 = require("@writetome51/array-get-shuffled");
+var array_get_unique_items_1 = require("@writetome51/array-get-unique-items");
+var is_array_not_array_1 = require("@writetome51/is-array-not-array");
+var is_object_not_object_1 = require("@writetome51/is-object-not-object");
+var public_array_container_1 = require("@writetome51/public-array-container");
 var PublicArrayGetter = /** @class */ (function (_super) {
     __extends(PublicArrayGetter, _super);
     function PublicArrayGetter(data) {
@@ -112,9 +113,18 @@ var PublicArrayGetter = /** @class */ (function (_super) {
     PublicArrayGetter.prototype.byTest = function (testFunction) {
         return array_get_by_test_1.getByTest(testFunction, this.data);
     };
+    // Here, 'null' is considered its own type, separate from 'object'.
+    // You can also pass 'array' as a type.  Passing 'object' will match with objects and arrays.
     PublicArrayGetter.prototype.byType = function (type) {
-        if (type === 'array')
-            return this.byTest(function (item) { return isArray_notArray_1.isArray(item); });
+        // @ts-ignore
+        if (['array', 'object', 'null'].includes(type)) {
+            if (type === 'array')
+                return this.byTest(function (item) { return is_array_not_array_1.isArray(item); });
+            if (type === 'object')
+                return this.byTest(function (item) { return is_object_not_object_1.isObject(item); });
+            if (type === 'null')
+                return this.byTest(function (item) { return item === null; });
+        }
         else
             return this.byTest(function (item) { return typeof item === type; });
     };

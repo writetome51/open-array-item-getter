@@ -1,20 +1,21 @@
-import { isArray } from 'basic-data-handling/isArray_notArray';
-import { PublicArrayContainer } from '@writetome51/public-array-container';
-import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
-import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
-import { getCopy } from '@writetome51/array-get-copy';
 import { getAdjacentAt } from '@writetome51/array-get-adjacent-at';
-import { getByIndex } from '@writetome51/array-get-by-index';
-import { getByIndexes } from '@writetome51/array-get-by-indexes';
-import { getByTest } from '@writetome51/array-get-by-test';
-import { getHead, getTail } from '@writetome51/array-get-head-tail';
-import { getBetween } from '@writetome51/array-get-between';
 import { getAllAfterFirst, getAllAfterLast } from '@writetome51/array-get-all-after';
 import { getAllBeforeFirst, getAllBeforeLast } from '@writetome51/array-get-all-before';
 import { getAdjacentToValue } from '@writetome51/array-get-adjacent-to-value';
+import { getBetween } from '@writetome51/array-get-between';
+import { getByIndex } from '@writetome51/array-get-by-index';
+import { getByIndexes } from '@writetome51/array-get-by-indexes';
+import { getByTest } from '@writetome51/array-get-by-test';
+import { getCopy } from '@writetome51/array-get-copy';
 import { getDuplicates } from '@writetome51/array-get-duplicates';
-import { getUniqueItems } from '@writetome51/array-get-unique-items';
+import { getHead, getTail } from '@writetome51/array-get-head-tail';
 import { getShuffled } from '@writetome51/array-get-shuffled';
+import { getUniqueItems } from '@writetome51/array-get-unique-items';
+import { IAdjacentToValueInfo } from '@writetome51/adjacent-to-value-info-interface/IAdjacentToValueInfo';
+import { isArray } from '@writetome51/is-array-not-array';
+import { isObject } from '@writetome51/is-object-not-object';
+import { IValueIndexPair } from 'value-index-pair-interface/IValueIndexPair';
+import { PublicArrayContainer } from '@writetome51/public-array-container';
 
 
 export class PublicArrayGetter extends PublicArrayContainer {
@@ -148,12 +149,18 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	}
 
 
+	// Here, 'null' is considered its own type, separate from 'object'.
+	// You can also pass 'array' as a type.  Passing 'object' will match with objects and arrays.
+
 	byType(
-		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined'
+		type: 'object' | 'array' | 'number' | 'string' | 'boolean' | 'function' | 'undefined' | 'null'
 	): IValueIndexPair[] {
-
-		if (type === 'array') return this.byTest((item) => isArray(item));
-
+		// @ts-ignore
+		if (['array', 'object', 'null'].includes(type)) {
+			if (type === 'array') return this.byTest((item) => isArray(item));
+			if (type === 'object') return this.byTest((item) => isObject(item));
+			if (type === 'null') return this.byTest((item) => item === null);
+		}
 		else return this.byTest((item) => typeof item === type);
 	}
 
