@@ -30,9 +30,8 @@ var public_array_container_1 = require("@writetome51/public-array-container");
 var public_array_container_by_type_implementation_1 = require("@writetome51/public-array-container-by-type-implementation");
 var PublicArrayGetter = /** @class */ (function (_super) {
     __extends(PublicArrayGetter, _super);
-    function PublicArrayGetter(data) {
-        if (data === void 0) { data = []; }
-        return _super.call(this, data) || this;
+    function PublicArrayGetter() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     // These functions don't modify the array.  They return item(s) copied from the array.
     // Returns independent copy of array.

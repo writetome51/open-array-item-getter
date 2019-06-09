@@ -21,11 +21,6 @@ import { _publicArrayContainer_byType_implementation }
 export class PublicArrayGetter extends PublicArrayContainer {
 
 
-	constructor(data: any[] = []) {
-		super(data);
-	}
-
-
 	// These functions don't modify the array.  They return item(s) copied from the array.
 
 
@@ -83,8 +78,6 @@ export class PublicArrayGetter extends PublicArrayContainer {
 	adjacentToValue(info: IAdjacentToValueInfo): any[] {
 		return getAdjacentToValue(info, this.data);
 	}
-
-
 	/********
 	 Explanation of adjacentToValue(info: IAdjacentToValueInfo): any[]
 	 Returns adjacent items including, or near, a particular value.
